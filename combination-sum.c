@@ -6,7 +6,7 @@ static int cmpint(const void *p1, const void *p2) {
 
 #define newObject(type) ((type*)calloc(1, sizeof(type)))
 #define newArray(type, size) ((type*)calloc(size, sizeof(type)))
-#define renewObject(ptr, type, size) ((type*)realloc(ptr, (size) * sizeof(type)))
+#define resizeArray(ptr, type, size) ((type*)realloc(ptr, (size) * sizeof(type)))
 
 void combinationSumC(
     int target, int *ins, int inSize,
@@ -14,8 +14,8 @@ void combinationSumC(
     int ***outs, int *outSize, int **outSizes)
 {
     if (target == 0) {
-        *outs = renewObject(*outs, int*, *outSize + 1);
-        *outSizes = renewObject(*outSizes, int, *outSize + 1);
+        *outs = resizeArray(*outs, int*, *outSize + 1);
+        *outSizes = resizeArray(*outSizes, int, *outSize + 1);
         (*outs)[*outSize] = newArray(int, cacheSize);
         memcpy((*outs)[*outSize], cache, cacheSize * sizeof(int));
         (*outSizes)[*outSize] = cacheSize;
