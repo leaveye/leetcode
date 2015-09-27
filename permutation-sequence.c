@@ -1,3 +1,4 @@
+// explained in: https://leetcode.com/discuss/60674/my-short-0ms-no-extra-space-n-79-k-max_int-solution
 char* getPermutation(int n, int k) {
     if (n < 0 || n >= '\128' - '1')
         n = 0;
